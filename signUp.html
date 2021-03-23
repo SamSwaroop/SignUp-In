@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+        <style>
+            .green{
+                color: green;
+            }
+            .red{
+                color:red;
+            }
+            .margin{
+                margin-left: 40px;
+                color: green;
+            }
+        </style>
+
+
+    </head>
+    <body>
+    <div id="mydiv" style="padding: 2%;"></div>
+
+    <script type="text/babel">
+        class Hello extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                 value:""
+                }
+                this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+                
+            }
+            render(){
+                return(
+                    <div >
+                        <div className="form-group">
+                            <label>Email address</label><br/>
+                            <input placeholder="email_Id" type="email" autocomplete="off" class="inputCustomStyle" 
+                            onChange={this.handleChange}  value={this.state.value} required/> 
+                           
+                        </div>
+                        <div>
+                            <label>Username</label><br/>
+                            <input placeholder="Username" type="Username" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label><br/>
+                            <input type="password" className="form-control" placeholder="Enter password" />
+                        </div>
+                        <div>
+                            <label>mobile Number</label><br/>
+                            <input placeholder="mobile Number" type="mobile number" required/>
+                        </div>
+                        <div>
+                            <label>Date Of Birth</label><br/>
+                            <input type="date" id="birthday" name="birthday"/>
+                        </div>
+                         <button class="btn green" onClick={this.handleSubmit}> SignUp </button>  
+                         <a href='Signin.html'> <button class="btn green margin"> signIn </button> </a>                                       
+                    </div>
+                )
+            }
+            handleChange(event) {
+            this.setState({value: event.target.value});
+        }
+
+        handleSubmit(event) {
+            alert('Welcome: ' + this.state.value );
+            event.preventDefault();
+        }
+            
+            
+            
+
+
+        }
+    
+        ReactDOM.render(<Hello/>, document.querySelector("#mydiv"));
+    
+    </script>
+    </body>
+</html>

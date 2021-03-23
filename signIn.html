@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+        <style>
+            .green{
+                color: green;
+            }
+            .red{
+                color:red;
+            }
+            .margin{
+                margin-left: 40px;
+                color: green;
+            }
+        </style>
+
+
+    </head>
+    <body>
+    <div id="mydiv" style="padding: 2%;"></div>
+
+    <script type="text/babel">
+        class Hello extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                 value:""
+                }
+                this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+                
+            }
+            render(){
+                return(
+                    <div >
+                        <div className="form-group">
+                            <label>Email address</label><br/>
+                            <input placeholder="Username" type="email" autocomplete="off" class="inputCustomStyle" 
+                            onChange={this.handleChange}  value={this.state.value} required/> 
+                           
+                        </div>
+                     
+                        <div className="form-group">
+                            <label>Password</label><br/>
+                            <input type="password" className="form-control" placeholder="Enter password" />
+                        </div>
+                       
+                        <button class="btn green" onClick={this.handleSubmit}>                SignIn </button>
+                        
+                        
+                        <a href='signUp.html'> <button class="btn green margin" > signUp </button> </a>            
+                    </div>
+                )
+            }
+            handleChange(event) {
+            this.setState({value: event.target.value});
+        }
+
+        handleSubmit(event) {
+            alert('Welcome: ' + this.state.value );
+            event.preventDefault();
+        }
+            
+            logInPage = (event) =>{
+
+           
+
+            }
+            updateResponse = (event)=>{
+                this.setState={
+                    email_Id:event.target.value
+                }
+            }
+
+
+        }
+    
+        ReactDOM.render(<Hello/>, document.querySelector("#mydiv"));
+    
+    </script>
+    </body>
+</html>
